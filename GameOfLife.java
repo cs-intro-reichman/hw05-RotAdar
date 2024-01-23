@@ -68,23 +68,29 @@ public class GameOfLife {
 		int cols = Integer.parseInt(in.readLine());
 		int[][] board = new int[rows + 2][cols + 2];
 		String row = "";
-		for (int i = 1 ; i <= rows ; i++)
+		for (int i = 0 ; i < ( rows + 2 ) ; i++)
 		{
-			for ( int j = 1 ; j <= cols ; j++)
+			if (i != 0 && i != rows+1){
+				row =in.readLine();
+			}
+			for ( int j = 0 ; j < ( cols + 2 ) ; j++)
 			{
-				if ( i == 1 || i == rows) {
-					board[i][j] = 0;
-				}
-				else if ( j == 1 || j == cols)
+				if ( i == 0 || i == rows + 1 || j == 0 || j == cols + 1)
 				{
 					board[i][j] = 0;
 				}
 				else
 				{
-					row = in.readLine();
-					for (int n = 0 ; n < row.length() ; n++)
+					if ( row == "")
 					{
-						board [i][j] = (row.charAt(n) == 'x' ? 1 : 0);
+						board[i][j] = 0;
+					}
+					else if (j >= row.length()) {
+						board[i][j] = 0;
+					}
+					else
+					{
+						board[i][j] = (row.charAt(j) == 'x' ? 1 : 0);
 					}
 				}
 			}
@@ -153,9 +159,9 @@ public class GameOfLife {
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     public static void print(int[][] arr) {
-		for (int i = 1 ; i <= arr[0].length ; i++)
+		for (int i = 0 ; i < arr[0].length ; i++)
 		{
-			for ( int j = 1 ; j <= arr.length; j++)
+			for ( int j = 0 ; j < arr.length; j++)
 			{
 				System.out.printf(" %d" , arr[i][j]);
 			}
