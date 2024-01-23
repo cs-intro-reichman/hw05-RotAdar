@@ -27,9 +27,9 @@ public class GameOfLife {
 	// the count and cellValue functions.
 	public static void test2(String fileName) {
 		int[][] board = read(fileName);
-		for (int i = 1; i < board.length; i++) {
-			for (int j = 1; j < board.length; j++) {
-				System.out.println("cell " + i + " , " + j + " value is now " + cellValue(board, i, j) + " ans it has " + count(board, i, j) + "neighboors");
+		for (int i = 1; i < board.length-1; i++) {
+			for (int j = 1; j < board.length-1; j++) {
+				System.out.println("cell " + i + " , " + j + " value is now " + cellValue(board, i, j) + " ans it has " + count(board, i, j) + " neighboors");
 			}
 		}
 	}
@@ -101,14 +101,15 @@ public class GameOfLife {
 	// Uses the cellValue(board,i,j) function to compute the value of each 
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
-		for (int i = 1 ; i <= board.length ; i++)
+		int[][] new_board = new int[board.length][board.length];
+		for (int i = 1 ; i < board.length-1 ; i++)
 		{
-			for ( int j = 1 ; j <= board.length ; j++)
+			for ( int j = 1 ; j < board.length-1 ; j++)
 			{
-				board[i][j] = cellValue(board, i, j);
+				new_board[i][j] = cellValue(board, i, j);
 			}
 		}
-		return null;
+		return new_board;
 	}
 
 	// Returns the value that cell (i,j) should have in the next generation.
