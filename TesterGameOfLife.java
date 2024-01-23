@@ -28,12 +28,12 @@ public class TesterGameOfLife {
         }
     }
 
-    private static void testPrint(String fileName) {
+    public static void testPrint(String fileName) {
         int[][] board = GameOfLife.read(fileName);
         GameOfLife.print(board);
     }
 
-    private static void testCellValue(String fileName) {
+    public static void testCellValue(String fileName) {
         int[][] board = GameOfLife.read(fileName);
         int[][] testCasesCellValue = fileName.equals("line.dat") ?
             new int[][] {
@@ -58,7 +58,7 @@ public class TesterGameOfLife {
         }
     }
     
-    private static void testCount(String fileName) {
+    public static void testCount(String fileName) {
         int[][] board = GameOfLife.read(fileName);
         int[][] testCasesCount = fileName.equals("line.dat") ?
             new int[][] {
@@ -83,7 +83,7 @@ public class TesterGameOfLife {
         }
     }
 
-	private static void testEvolve(String fileName, int Ngen) {
+	public static void testEvolve(String fileName, int Ngen) {
 		int[][] board = GameOfLife.read(fileName);
 		for (int gen = 0; gen < Ngen; gen++) {
 			System.out.println("Generation " + gen + ":");
